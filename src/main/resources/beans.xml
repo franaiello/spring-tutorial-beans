@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+    <bean id="person" class="com.exercise.spring.Person"
+        scope="singleton" factory-method="getInstance">
+        <constructor-arg name="id" value="777" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg name="name" value="Mary" type="java.lang.String"></constructor-arg>
+        <property name="taxId" value="456"></property>
+        <property name="address" ref="address"></property>
+    </bean>
+
+    <!--<bean id="person2" class="com.exercise.spring.Person"-->
+          <!--scope="singleton" init-method="onCreate" destroy-method="onDestroy"-->
+          <!--factory-method="createPerson" factory-bean="personfactory">-->
+        <!--<constructor-arg name="id" value="888" type="java.lang.Integer"></constructor-arg>-->
+        <!--<constructor-arg name="name" value="Mike" type="java.lang.String"></constructor-arg>-->
+        <!--<property name="taxId" value="456"></property>-->
+        <!--<property name="address" ref="address"></property>-->
+    <!--</bean>-->
+
+    <bean id="address"
+          class="com.exercise.spring.Address"
+          scope="singleton"
+          factory-method="getInstance">
+        <constructor-arg name="street" value="2019 Camas Ave NE" type="java.lang.String"></constructor-arg>
+        <constructor-arg name="postalCode" value="98056" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="address2"
+          class="com.exercise.spring.Address" p:street="23 Vinyard Lane" p:postalCode="6789"
+          scope="singleton">
+          <!--factory-method="getInstance2">-->
+        <!--<constructor-arg name="street" value="2019 Camas Ave NE" type="java.lang.String"></constructor-arg>-->
+        <!--<constructor-arg name="postalCode" value="98056" type="java.lang.String"></constructor-arg>-->
+    </bean>
+
+    <bean id="personfactory"
+          class="com.exercise.spring.PersonFactory">
+    </bean>
+</beans>

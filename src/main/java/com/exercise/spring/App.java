@@ -6,14 +6,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         // Spring Bean Container
-        ApplicationContext context = new ClassPathXmlApplicationContext("file:src/main/java/com/exercise/spring/beans/beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
-        Person person = (Person) context.getBean("person");
-        person.speak();
+        Person person1 = (Person) context.getBean("person");
 
-        Address address = (Address)context.getBean("address");
-        System.out.println(address);
-        System.out.println(person);
+        person1.setTaxId(1234);
+        person1.setName("Francis");
+
+        System.out.println(person1);
+
+//        Address address2 = (Address)context.getBean("address2");
+//        System.out.println(address2);
 
         ((ClassPathXmlApplicationContext)context).close();
     }
