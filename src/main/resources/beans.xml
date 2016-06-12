@@ -13,14 +13,68 @@
         <property name="address" ref="address"></property>
     </bean>
 
-    <!--<bean id="person2" class="com.exercise.spring.Person"-->
-          <!--scope="singleton" init-method="onCreate" destroy-method="onDestroy"-->
-          <!--factory-method="createPerson" factory-bean="personfactory">-->
-        <!--<constructor-arg name="id" value="888" type="java.lang.Integer"></constructor-arg>-->
-        <!--<constructor-arg name="name" value="Mike" type="java.lang.String"></constructor-arg>-->
-        <!--<property name="taxId" value="456"></property>-->
-        <!--<property name="address" ref="address"></property>-->
-    <!--</bean>-->
+    <bean id="basket" class="com.exercise.spring.pojo.FruitBasket">
+        <constructor-arg name="name" value="Frans Fruit Basket" type="java.lang.String"></constructor-arg>
+        <constructor-arg name="fruits">
+            <list>
+                <value>apple</value>
+                <value>bananas</value>
+                <value>orange</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="customers" class="com.exercise.spring.Customers">
+        <property name="customers">
+            <list>
+                <bean class="com.exercise.spring.pojo.Customer">
+                    <constructor-arg name="customerNo" value="1" type="java.lang.Integer"></constructor-arg>
+                    <constructor-arg name="customerFirstName" value="Francis"></constructor-arg>
+                    <constructor-arg name="customerLastName" value="Aiello"></constructor-arg>
+                </bean>
+
+                <bean class="com.exercise.spring.pojo.Customer">
+                    <constructor-arg name="customerNo" value="2" type="java.lang.Integer"></constructor-arg>
+                    <constructor-arg name="customerFirstName" value="Kathy"></constructor-arg>
+                    <constructor-arg name="customerLastName" value="Aiello"></constructor-arg>
+                </bean>
+
+            </list>
+        </property>
+    </bean>
+
+    <bean id="gorilla" class="com.exercise.spring.pojo.Animal">
+        <property name="name" value="Bob"></property>
+        <property name="type" value="gorilla"></property>
+    </bean>
+
+    <bean id="monkey" class="com.exercise.spring.pojo.Animal">
+        <property name="name" value="Fred"></property>
+        <property name="type" value="monkey"></property>
+    </bean>
+
+    <bean id="panda" class="com.exercise.spring.pojo.Animal">
+        <property name="name" value="Charlie"></property>
+        <property name="type" value="panda"></property>
+    </bean>
+
+    <bean id="jungle" class="com.exercise.spring.pojo.Jungle">
+        <property name="foods">
+            <props>
+                <prop key="gorilla">banana</prop>
+                <prop key="monkey">banana</prop>
+                <prop key="panda">bamboo</prop>
+            </props>
+        </property>
+
+        <property name="animals">
+            <map>
+                <entry key="gorilla" value-ref="gorilla"></entry>
+                <entry key="monkey" value-ref="monkey"></entry>
+                <entry key="panda" value-ref="panda"></entry>
+            </map>
+        </property>
+    </bean>
 
     <bean id="address"
           class="com.exercise.spring.Address"
